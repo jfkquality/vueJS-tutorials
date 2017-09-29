@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VueJS Tutorial - Net Ninja</title>
+    <link href="styles.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="vue-app">
+      <h1>{{ greet('afternoon') }}</h1>
+      <p>Name: {{ name }}</p>
+      <p>Job: {{ job }}</p>
+
+      Net Ninja Tutorial #5. Binding
+      <h1>Data Binding. Lesson 4</h1>
+      <a v-bind:href="website" target="_blank">The Net Ninja</a>
+      <!-- Can just use : instead of v-bind: -->
+      <a :href="website" target="_blank">The Net Ninja</a>
+      <input type="text" value="John" />
+      <input type="text" v-bind:value="name" />
+      <input type="text" v-bind:value="job" />
+      <p v-html="websiteTag"></p>
+      <p>{{ website }}</p>
+
+      Net Ninja Tutorial #5. Events
+      <h1>Events</h1>
+      <button v-on:click="age++" type="button" name="button">Add a Year</button>
+      <button v-on:click="age--" type="button" name="button">Subract a Year</button>
+      <button v-on:click.once="add(1)" type="button" name="button">Add a Year</button>
+      <button v-on:click="subtract(1)" type="button" name="button">Subract a Year</button>
+      <button v-on:dblclick="add(10)" type="button" name="button">Add 10 Years</button>
+      <button v-on:dblclick="subtract(10)" type="button" name="button">Subract 10 Years</button>
+      <p>Age: {{ age }}</p>
+      <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div>
+      <!-- .prevent prevents the default behavior of the event (here: going to the website) -->
+      <a v-on:click.prevent="click" href="http://www.thenetninja.co.uk">The Net Ninja</a>
+      <h1>Keyboard Events</h1>
+      <label>Name:</label>
+      <input v-on:keyup.enter="logName" type="text" name="" value="">
+      <label>Age:</label>
+      <input v-on:keyup.alt.enter="logAge" type="text" name="" value="">
+      <h1>2-Way Data Binding</h1>
+      <label>Name:</label>
+      <input v-on:keyup="logName" type="text" name="" value="">
+      <span>{{ name }}</span>
+      <label>Age:</label>
+      <input v-on:keyup="logAge" type="text" name="" value="">
+      <span>{{ age }}</span>
+    </div>
+    {{ name }} This does not work b/c it's not in the element (div) with the id of the Vue instance
+    <script src="app.js"></script>
+  </body>
+</html>
